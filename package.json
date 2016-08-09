@@ -1,0 +1,19 @@
+{
+  "name": "h5-tutorial",
+  "version": "1.0.0",
+  "description": "h5 tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp default"
+  },
+  "keywords": [
+    "h5",
+    "tutorial"
+  ],
+  "author": "peter",
+  "license": "ISC",
+  "devDependencies": {
+    "jquery": "^3.1.0",
+    "zepto": "^1.2.0"
+  }
+}
