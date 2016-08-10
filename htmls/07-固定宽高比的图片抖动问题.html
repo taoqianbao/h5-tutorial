@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<section>
+
+			<h2>
+				1、第一种方案使用padding-top或者padding-bottom来实现固定宽高比。优点是纯CSS方案，缺点是HTML冗余，并且对输出到第三方不友好。
+			</h2>
+			<code>
+				
+<div style="padding-top:75%">
+    <img data-src="" alt="" class="lazyload">
+<div>				
+				
+			</code>
+		</section>
+
+		<section>
+
+			<h2>
+				2、第二种方案在页面初始化阶段利用ratio设置实际宽高值，优点是html干净，对输出到第三方友好，缺点是依赖js，理论上会至少抖动一次。
+			</h2>
+			<code>
+				<img data-src="" alt="" class="lazyload" data-ratio="0.75">
+			</code>
+
+		</section>
+
+		<section>
+
+			<p>
+				那么，这个 padding-top: 75%; 和 data-ratio="0.75" 的数据从哪儿来呢？在你上传图片的时候，需要后台给你返回原始宽高值，计算得到宽高比，然后保存到data-ratio上。
+			</p>
+
+		</section>
+		<script type="text/javascript">
+			// 重置图片高度，仅限文章详情页
+			function resetImgHeight(els, placeholder) {
+				var ratio = 0,
+					i, len, width;
+
+				for(i = 0, len = els.length; i < len; i++) {
+					els[i].src = placeholder;
+
+					width = els[i].clientWidth; //一定要使用clientWidth
+					if(els[i].attributes['data-ratio']) {
+						ratio = els[i].attributes['data-ratio'].value || 0;
+						ratio = parseFloat(ratio);
+					}
+
+					if(ratio) {
+						els[i].style.height = (width * ratio) + 'px';
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

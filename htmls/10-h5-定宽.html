@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>固定宽度，viewport 缩放</title>
+		<meta name="viewport" content="width=640">
+		<script src="10-mobile-util.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/*
+		 	* 文本折行问题可以通过 css 样式解决
+		 	*/
+			
+			section,
+			p,
+			div,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			.fix-break {
+				background: transparent url('about:blank');
+				word-break: break-all;
+			}
+		</style>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				-webkit-text-size-adjust: none;
+			}
+			
+			html {
+				background-color: #f7f7f7;
+			}
+			
+			body {
+				width: 640px;
+				margin: 0 auto;
+				line-height: 1.4;
+				background-color: #fff;
+			}
+			
+			.app {
+				position: relative;
+				display: -webkit-flex;
+				align-items: center;
+				padding: 26px 20px;
+				border-bottom: 1px solid #cfcfcf;
+			}
+			
+			.app__icon {
+				width: 94px;
+				height: 94px;
+				border-radius: 16px;
+				overflow: hidden;
+			}
+			
+			.app__icon__img {
+				display: block;
+				max-width: 100%;
+			}
+			
+			.app__text {
+				margin-left: 18px;
+				margin-right: auto;
+			}
+			
+			.app__text__title {
+				font-size: 35px;
+				color: #181818;
+			}
+			
+			.app__text__summary {
+				font-size: 24px;
+				color: #828282;
+			}
+			
+			.app__button {
+				display: block;
+				padding: 8px 26px;
+				font-size: 26px;
+				text-align: center;
+				color: #fff;
+				background-color: #3cba1a;
+				border-radius: 8px;
+				text-decoration: none;
+			}
+			
+			.app__label {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 88px;
+				height: 64px;
+				background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABACAMAAACpzkDwAAAAY1BMVEX////kNyDkNyDkNyDkNyDkNyDkNyDkNyDkNyDkNyD99vXkNyDkNyDkNyDkNyD1xcHkNyD////99vX76+r64d/41tT2y8j0wLzztK/xqKLvm5TtjYXrf3bqcGToX1HmTTzkNyDPEQg9AAAAEXRSTlMAESIzRFVmd4iZqqq7zN3u7uYy9NoAAAHASURBVHja1dXbkoIwEATQJtyXyxJFIKiE///KJSJCVhQ3ZB62H7Sssk6Nk8agt54ijXwG2EXzJHAxxuKkScAwx5KaRS702FBTbdQnuKtrI9V3sJbFV0rezR9aIWouNzcQrKs6fOHi9i74FPG+AiHD60zmnBFuhHjPJh7eZhVuN6sVMeATuO+bRr3Ksu234TzAdh4wV5048WYTznzgD3BfV93gnvsNOPWAz+FusWJev4GzT9kX8COdKav1uL1P+gLOfWAv3KofoT/gRejAABZPPf4FJwzYDTeqGxpc+IAZrK2i5hcdjh0Yw7IUChbV9C83w7kHmMOC3+BmePIkP/QLOHGwA+74cVxFxdszr2bYZLtLuFJrVbA8XU+3VY9wxrAPburH4V34QU5wDOyE720YYHkc740BNl/DEj6oCl/VKR7lCH+7sAGX0xVXXe/H+QUr8NOV5oAEjgESOAINHIIGDkAD25h3DbbjguLcVuEYNHACGjhzaOCcgQQuXNDAAWjgGDSwxYPTYRc0cAgaOAURzIhg24uY4BxEsEcEx6CBC4cIjkADkwwMkqqNMM3AoBoYVAODphIKZkRwSuTCxz/LDzuIyYMbR8EsAAAAAElFTkSuQmCC') no-repeat;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="app">
+			<div class="app__icon">
+				<img class="app__icon__img" src="../imgs/3.png">
+			</div>
+			<div class="app__text">
+				<h2 class="app__text__title">忍者必须死Ⅱ</h2>
+				<p class="app__text__summary">史上最萌的手游，安装量过10万。</p>
+			</div>
+			<a class="app__button" href="#">下载</a>
+			<i class="app__label"></i>
+		</div>
+
+		<section>
+
+			<pre>
+固定宽度，viewport 缩放
+
+视觉稿、页面宽度、viewport width 使用统一宽度，利用浏览器自身缩放完成适配。页面样式（包括图像元素）完全按照视觉稿的尺寸，使用定值单位 （px、em）即可完成。
+
+优点：
+
+开发简单：缩放交给浏览器，完全按视觉稿切图。
+还原精准：绝对等比例缩放，可以精准还原视觉稿（不考虑清晰度的情况下）。
+测试方便：在PC端即可完成大部分测试，手机端只需酌情调整一些细节（比如图标、字体混合排列时，因为字体不同造成的对齐问题）。
+存在的问题：
+
+像素丢失：对于一些分辨率较低的手机，可能设备像素还未达到指定的 viewport 宽度，此时屏幕的渲染可能就不准确了。比较常见的是边框“消失”了，不过随着手机硬件的更新，这个问题会越来越少的。
+缩放失效：某些安卓机不能正常的根据 meta 标签中 width 的值来缩放 viewport，需要配合 initial-scale 。
+文本折行：存在于缩放失效的机型中，某些手机为了便于文本的阅读，在文本到达 viewport 边缘（非元素容器的边缘）时即进行折行，而当 viewport 宽度被修正后，浏览器并没有正确的重绘，所以就发现文本没有占满整行。一些常用的段落性文本标签会存在该问题。
+缩放失效问题需通过 js 动态设定 initial-scale。		
+		
+	</pre>
+
+		</section>
+	</body>
+
+</html>

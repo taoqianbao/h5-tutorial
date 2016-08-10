@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title></title>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				-webkit-text-size-adjust: none;
+			}
+			
+			html {
+				background-color: #f7f7f7;
+			}
+			
+			body {
+				line-height: 1.4;
+				background-color: #fff;
+			}
+			
+			.app {
+				position: relative;
+				display: -webkit-flex;
+				align-items: center;
+				padding: 13px 10px;
+				border-bottom: 1px solid #cfcfcf;
+			}
+			
+			.app__icon {
+				width: 47px;
+				height: 47px;
+				border-radius: 8px;
+				overflow: hidden;
+			}
+			
+			.app__icon__img {
+				display: block;
+				max-width: 100%;
+			}
+			
+			.app__text {
+				margin-left: 9px;
+				margin-right: auto;
+			}
+			
+			.app__text__title {
+				font-size: 18px;
+				color: #181818;
+			}
+			
+			.app__text__summary {
+				font-size: 12px;
+			}
+			
+			.app__button {
+				display: block;
+				padding: 4px 13px;
+				font-size: 13px;
+				text-align: center;
+				color: #fff;
+				background-color: #3cba1a;
+				border-radius: 4px;
+				text-decoration: none;
+			}
+			
+			.app__label {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 44px;
+				height: 32px;
+				background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABACAMAAACpzkDwAAAAY1BMVEX////kNyDkNyDkNyDkNyDkNyDkNyDkNyDkNyDkNyD99vXkNyDkNyDkNyDkNyD1xcHkNyD////99vX76+r64d/41tT2y8j0wLzztK/xqKLvm5TtjYXrf3bqcGToX1HmTTzkNyDPEQg9AAAAEXRSTlMAESIzRFVmd4iZqqq7zN3u7uYy9NoAAAHASURBVHja1dXbkoIwEATQJtyXyxJFIKiE///KJSJCVhQ3ZB62H7Sssk6Nk8agt54ijXwG2EXzJHAxxuKkScAwx5KaRS702FBTbdQnuKtrI9V3sJbFV0rezR9aIWouNzcQrKs6fOHi9i74FPG+AiHD60zmnBFuhHjPJh7eZhVuN6sVMeATuO+bRr3Ksu234TzAdh4wV5048WYTznzgD3BfV93gnvsNOPWAz+FusWJev4GzT9kX8COdKav1uL1P+gLOfWAv3KofoT/gRejAABZPPf4FJwzYDTeqGxpc+IAZrK2i5hcdjh0Yw7IUChbV9C83w7kHmMOC3+BmePIkP/QLOHGwA+74cVxFxdszr2bYZLtLuFJrVbA8XU+3VY9wxrAPburH4V34QU5wDOyE720YYHkc740BNl/DEj6oCl/VKR7lCH+7sAGX0xVXXe/H+QUr8NOV5oAEjgESOAINHIIGDkAD25h3DbbjguLcVuEYNHACGjhzaOCcgQQuXNDAAWjgGDSwxYPTYRc0cAgaOAURzIhg24uY4BxEsEcEx6CBC4cIjkADkwwMkqqNMM3AoBoYVAODphIKZkRwSuTCxz/LDzuIyYMbR8EsAAAAAElFTkSuQmCC') no-repeat;
+				background-size: contain;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="app">
+			<div class="app__icon">
+				<img class="app__icon__img" src="../imgs/3.png">
+			</div>
+			<div class="app__text">
+				<h2 class="app__text__title">自适应</h2>
+				<p class="app__text__summary">史上最萌的手游，安装量过10万。</p>
+			</div>
+			<a class="app__button" href="#">下载</a>
+			<i class="app__label"></i>
+		</div>
+
+		<section>
+
+			<pre>
+固定高度，宽度自适应
+
+这是目前最通用的一种做法，属于自适应布局，viewport width 设置为 device-width，以较小宽度（如 320px）的视觉稿作为参照进行布局。垂直方向的高度和间距使用定值，水平方向混合使用定值和百分比或者利用弹性布局，最终达到“当手机屏幕变化时，横向拉伸或者填充空白的效果”。图像元素根据容器情况，使用定值或者 background-size 缩放。
+
+粗略浏览了下一些大厂的首页，像百度、腾讯、Facebook、Twitter 都是采用的这种方案。
+
+要点：
+
+以小宽度作为参照是因为如果布局满足了小宽度的摆放，当屏幕变宽时，简单的填充空白就可以了；而如果反过来就可能造成“挤坏了”，考虑 header 区域，左测 logo 右测横向 nav 的情况。
+需要小宽度的布局，又需要大宽度的图像，这是一个矛盾点。
+320px 过于窄小，不利于页面的设计；只能设计横向拉伸的元素布局，存在很多局限性。
+兼容性较好。
+实现比较简单，样式中的尺寸都按照视觉稿二分之一大小设置		
+		
+	</pre>
+
+		</section>
+
+	</body>
+
+</html>

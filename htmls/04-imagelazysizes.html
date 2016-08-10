@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+
+		<style type="text/css">
+			.lazyload,
+			.lazyloading {
+				opacity: 0;
+			}
+			
+			.lazyloaded {
+				opacity: 1;
+				transition: opacity 500ms;
+			}
+		</style>
+		<style type="text/css">
+			.article-detail-bd {
+				.lazyload {
+					opacity: 0;
+				}
+				.lazyloading {
+					opacity: 1;
+					background: #f7f7f7 no-repeat center;
+				}
+			}
+		</style>
+		<script src="../node_modules/lazysizes/lazysizes.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+			//read
+			var h1 = document.getElementById("element1").clientHeight;
+
+			//write
+			requestAnimationFrame(function() {
+				document.getElementById("element1").style.height = (h1 * 2) + 'px';
+			});
+		</script>
+
+	</head>
+
+	<body>
+
+		<section class="article-detail-bd">
+			<img data-src="../imgs/1.jpg" class="lazyload" />
+		</section>
+
+	</body>
+
+</html>

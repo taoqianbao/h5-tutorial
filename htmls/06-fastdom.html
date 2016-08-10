@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../node_modules/fastdom/fastdom.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="element1"></div>
+		<script type="text/javascript">
+			window.onload = function() {
+
+				//
+				var element1 = document.getElementById("element1");
+
+				fastdom.read(function() {
+
+					var h1 = element1.clientHeight;
+
+					fastdom.write(function() {
+						element1.style.height = (h1 * 2) + 'px';
+					});
+
+				});
+			}
+		</script>
+
+	</body>
+
+</html>

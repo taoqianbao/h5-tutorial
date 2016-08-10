@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<section>
+			<h2>
+				async & defer属性
+			</h2>
+
+			<code>
+				<script src="../libs/flexible/flexible.js" type="text/javascript" charset="utf-8" defer onload="init()"></script>
+				
+				document.write('<script src="" async></script>');
+				
+			</code>
+
+			<p>
+				async和defer的区别在于：async属性会在脚本下载完成后无序立即执行，defer属性会在脚本下载完成后按照document结构顺序执行。
+			</p>
+
+		</section>
+
+	</body>
+
+</html>
